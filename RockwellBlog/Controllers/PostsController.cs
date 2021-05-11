@@ -17,12 +17,14 @@ namespace RockwellBlog.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IBlogFileService _fileService;
         private readonly IConfiguration _configuration;
+        private readonly BasicSlugService _slugService;
 
-        public PostsController(ApplicationDbContext context, IBlogFileService fileService, IConfiguration configuration)
+        public PostsController(ApplicationDbContext context, IBlogFileService fileService, IConfiguration configuration, BasicSlugService slugService)
         {
             _context = context;
             _fileService = fileService;
             _configuration = configuration;
+            _slugService = slugService;
         }
 
         public async Task<ActionResult> BlogPostIndex(int? id)
@@ -32,13 +34,22 @@ namespace RockwellBlog.Controllers
                 return NotFound();
             }
 
+            var blog = _context.Blog.Find(id);
             var blogPosts = await _context.Posts.Where(p => p.BlogId == id).ToListAsync();
+
+            ViewData["HeaderText"] = blog.Name;
+            ViewData["SubText"] = blog.Description;
+            ViewData["HeaderImage"] = _fileService.DecodeImage(blog.ImageData, blog.ContentType);
+
             return View(blogPosts);
         }
 
         // GET: Posts
         public async Task<IActionResult> Index()
         {
+            ViewData["HeaderText"] = "The Post Index";
+            ViewData["SubText"] = "Read all my Posts!";
+
             var applicationDbContext = _context.Posts.Include(p => p.Blog);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -56,11 +67,20 @@ namespace RockwellBlog.Controllers
 
             var post = await _context.Posts
                 .Include(p => p.Blog)
+                .Include(p => p.Comments)
+                .ThenInclude(c => c.Author)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (post == null)
             {
                 return NotFound();
             }
+
+            //This needs to be abstracted into a service
+            ViewData["HeaderText"] = post.Title;
+            ViewData["SubText"] = post.Abstract;
+            ViewData["HeaderImage"] = _fileService.DecodeImage(post.ImageData, post.ContentType);
+            ViewData["AuthorText"] = $"Created by Samuel Musa on {post.Created.ToString("MMM dd, yyyy")}";
 
             return View(post);
         }
@@ -90,7 +110,14 @@ namespace RockwellBlog.Controllers
                                     _configuration["DefaultPostImage"].Split('.')[1] :
                                     _fileService.ContentType(post.ImageFile);
 
-
+                var slug = _slugService.UrlFriendly(post.Title);
+                if (!_slugService.IsUnique(slug))
+                {
+                    ModelState.AddModelError("Title", "There is an issue with a Title");
+                    ModelState.AddModelError("", "Where does this thing show up");
+                    return View(post);
+                }
+                post.Slug = slug;
                 _context.Add(post);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("BlogPostIndex", new { id = post.BlogId });

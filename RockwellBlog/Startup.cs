@@ -44,6 +44,8 @@ namespace RockwellBlog
             services.AddRazorPages();
 
             services.AddScoped<IBlogFileService, BasicFileService>();
+            services.AddScoped<DataService>();
+            services.AddScoped<BasicSlugService>();
 
         }
 

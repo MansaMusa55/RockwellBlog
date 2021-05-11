@@ -50,6 +50,6 @@ namespace RockwellBlog.Models
 
         //Navigational properties
         public virtual Blog Blog { get; set; }
-
+        public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
     }
 }
