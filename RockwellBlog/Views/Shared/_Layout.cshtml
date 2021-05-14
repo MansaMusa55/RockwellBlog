@@ -53,6 +53,11 @@
                         <h1>@ViewData["HeaderText"]</h1>
                         <span class="subheading">@ViewData["SubText"]</span>
                         <span><i>@ViewData["AuthorText"]</i></span>
+                        @*This is where i will collect search string from user*@
+                        <form asp-action="SearchIndex" asp-controller="Posts">
+                            <input class="form-control" type="text" name="SearchString" placeholder="Enter search term"/>
+                            <button class="btn-sm btn-dark btn-block" type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
             </div>

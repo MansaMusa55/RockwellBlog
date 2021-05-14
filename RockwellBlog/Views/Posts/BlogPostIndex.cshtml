@@ -21,12 +21,12 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <a class="btn btn-dark btn-block btn-sm" asp-controller="Posts" asp-action="Details" asp-route-id="@post.Id">Read Full Post</a>
+                                <a class="btn btn-dark btn-block btn-sm" asp-controller="Posts" asp-action="Details" asp-route-slug="@post.Slug">Read Full Post</a>
                             </div>
                         </div>
                     </div>
                     <div class="col">
-                        <a href="post.html">
+                        <a asp-controller="Posts" asp-action="Details" asp-route-slug="@post.Slug">
                             <h2 class="post-title">@post.Title</h2>
                             <h3 class="post-subtitle">@post.Abstract</h3>
                         </a>

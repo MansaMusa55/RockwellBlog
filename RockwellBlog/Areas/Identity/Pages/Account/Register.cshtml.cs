@@ -111,8 +111,11 @@ namespace RockwellBlog.Areas.Identity.Pages.Account
                     DisplayName = Input.DisplayName,
                     UserName = Input.Email,
                     Email = Input.Email,
+
                     ImageData = (await _imageService.EncodeFileAsync(Input.ImageFile)) ??
                              await _imageService.EncodeFileAsync(_configuration["DefaultUserImage"]),
+
+
                     ContentType = Input.ImageFile is null ?
                                     _configuration["DefaultUserImage"].Split('.')[1] :
                                     _imageService.ContentType(Input.ImageFile)

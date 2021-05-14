@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using RockwellBlog.Data;
 using RockwellBlog.Models;
 using RockwellBlog.Services;
+using X.PagedList;
 
 namespace RockwellBlog.Controllers
 {
@@ -18,13 +19,15 @@ namespace RockwellBlog.Controllers
         private readonly IBlogFileService _fileService;
         private readonly IConfiguration _configuration;
         private readonly BasicSlugService _slugService;
+        private readonly SearchService _searchService;
 
-        public PostsController(ApplicationDbContext context, IBlogFileService fileService, IConfiguration configuration, BasicSlugService slugService)
+        public PostsController(ApplicationDbContext context, IBlogFileService fileService, IConfiguration configuration, BasicSlugService slugService, SearchService searchService)
         {
             _context = context;
             _fileService = fileService;
             _configuration = configuration;
             _slugService = slugService;
+            _searchService = searchService;
         }
 
         public async Task<ActionResult> BlogPostIndex(int? id)
@@ -58,9 +61,9 @@ namespace RockwellBlog.Controllers
 
 
         // GET: Posts/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string slug)
         {
-            if (id == null)
+            if (string.IsNullOrEmpty(slug))
             {
                 return NotFound();
             }
@@ -69,18 +72,13 @@ namespace RockwellBlog.Controllers
                 .Include(p => p.Blog)
                 .Include(p => p.Comments)
                 .ThenInclude(c => c.Author)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Slug == slug);
 
             if (post == null)
             {
                 return NotFound();
             }
 
-            //This needs to be abstracted into a service
-            ViewData["HeaderText"] = post.Title;
-            ViewData["SubText"] = post.Abstract;
-            ViewData["HeaderImage"] = _fileService.DecodeImage(post.ImageData, post.ContentType);
-            ViewData["AuthorText"] = $"Created by Samuel Musa on {post.Created.ToString("MMM dd, yyyy")}";
 
             return View(post);
         }
@@ -91,6 +89,22 @@ namespace RockwellBlog.Controllers
             ViewData["BlogId"] = new SelectList(_context.Blog, "Id", "Description");
             return View();
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SearchIndex(int? page, string searchString)
+        {
+            ViewData["SearchString"] = searchString;
+            //Step 1: I need a set of results stemming from this search string
+            var posts = _searchService.SearchContent(searchString);
+
+            var pageNumber = page ?? 1;
+            var pageSize = 2;
+
+            return View("Index", await posts.ToPagedListAsync(pageNumber, pageSize));
+        }
+
 
         // POST: Posts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -149,7 +163,7 @@ namespace RockwellBlog.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,BlogId,Title,Abstract,Content,Created,Updated,Slug,PublishState")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,BlogId,Created,Slug,Title,Abstract,Content,PublishState")] Post post)
         {
             if (id != post.Id)
             {
@@ -160,6 +174,29 @@ namespace RockwellBlog.Controllers
             {
                 try
                 {
+                    var newSlug = _slugService.UrlFriendly(post.Title);
+                    //I need to compare the original slug with the curretn slug
+                    if(post.Slug != _slugService.UrlFriendly(post.Title))
+                    {
+                        if (!_slugService.IsUnique(newSlug))
+                        {
+                            ModelState.AddModelError("Title", "There is an Issue witht the Title.");
+                            return View(post);
+                        }
+                       
+
+                        post.Slug = newSlug;
+                    }
+
+                    if(post.ImageFile is not null)
+                    {
+                        post.ImageData = await _fileService.EncodeFileAsync(post.ImageFile);
+                        post.ContentType = _fileService.ContentType(post.ImageFile);
+                    }
+
+                    post.Updated = DateTime.Now;
+
+
                     _context.Update(post);
                     await _context.SaveChangesAsync();
                 }

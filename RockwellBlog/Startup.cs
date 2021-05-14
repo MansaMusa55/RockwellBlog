@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,7 +32,7 @@ namespace RockwellBlog
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Connection.GetConnectionString(Configuration)));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -46,6 +47,8 @@ namespace RockwellBlog
             services.AddScoped<IBlogFileService, BasicFileService>();
             services.AddScoped<DataService>();
             services.AddScoped<BasicSlugService>();
+            services.AddScoped<IEmailSender, GmailEmailService>();
+            services.AddScoped<SearchService>();
 
         }
 
@@ -73,6 +76,11 @@ namespace RockwellBlog
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "SEORoute",
+                    pattern: "SamuelsPosts/Details/{slug}",
+                    defaults: new { controller = "Posts", action = "Details" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
