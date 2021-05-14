@@ -487,7 +487,6 @@ C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\R
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\Razor\Views\Posts\Edit.cshtml.g.cs
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\Razor\Views\Posts\Index.cshtml.g.cs
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\Razor\Views\Posts\BlogPostIndex.cshtml.g.cs
-C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\RockwellBlog.csprojAssemblyReference.cache
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\Razor\Views\Comments\Delete.cshtml.g.cs
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\Razor\Views\Comments\Details.cshtml.g.cs
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\Razor\Views\Comments\Edit.cshtml.g.cs
@@ -499,3 +498,4 @@ C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\J
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\X.PagedList.dll
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\X.PagedList.Mvc.Core.dll
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\X.PagedList.Web.Common.dll
+C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\Razor\Views\Posts\SearchIndex.cshtml.g.cs
