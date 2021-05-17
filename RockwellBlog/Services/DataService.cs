@@ -62,7 +62,8 @@ namespace RockwellBlog.Services
             var adminUser = new BlogUser()
             {
                 Email = "SamCannon@mailinator.com",
-                UserName = "Mansa",
+                UserName = "SamCannon@mailinator.com",
+                DisplayName = "Mansa",
                 FirstName = "Samuel",
                 LastName = "Cannon",
                 PhoneNumber = "763-283-7237",
