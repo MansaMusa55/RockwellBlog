@@ -10,7 +10,7 @@ using RockwellBlog.Data;
 namespace RockwellBlog.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210517155024_002")]
+    [Migration("20210517160146_002")]
     partial class _002
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -237,10 +237,6 @@ namespace RockwellBlog.Data.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("text");

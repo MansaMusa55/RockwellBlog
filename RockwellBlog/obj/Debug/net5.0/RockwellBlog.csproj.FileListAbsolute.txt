@@ -499,4 +499,3 @@ C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\X
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\X.PagedList.Mvc.Core.dll
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\X.PagedList.Web.Common.dll
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\Razor\Views\Posts\SearchIndex.cshtml.g.cs
-C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\RockwellBlog.csprojAssemblyReference.cache

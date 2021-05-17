@@ -65,7 +65,6 @@ namespace RockwellBlog.Services
                 UserName = "Mansa",
                 FirstName = "Samuel",
                 LastName = "Cannon",
-                Password = _configuration["AdminPassword"],
                 PhoneNumber = "763-283-7237",
                 EmailConfirmed = true,
             };
