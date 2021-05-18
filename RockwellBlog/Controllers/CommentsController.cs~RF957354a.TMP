@@ -12,7 +12,7 @@ using RockwellBlog.Models;
 
 namespace RockwellBlog.Controllers
 {
-   
+    [Authorize]
     public class CommentsController : Controller
     {
         private readonly ApplicationDbContext _context;
