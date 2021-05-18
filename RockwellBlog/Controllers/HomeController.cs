@@ -31,8 +31,8 @@ namespace RockwellBlog.Controllers
             var imageData = await _fileService.EncodeFileAsync("home-bg1.jpg");
 
             ViewData["HeaderImage"] = _fileService.DecodeImage(imageData, "jpg");
-            ViewData["HeaderText"] = "The Landing Page";
-            ViewData["SubText"] = "Welcome to my landing page";
+            ViewData["HeaderText"] = "The BlogHub";
+            ViewData["SubText"] = "Welcome to my Web Dev Blog";
 
             var pageNumber = page ?? 1;
             var pageSize = 1;

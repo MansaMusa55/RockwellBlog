@@ -44,6 +44,13 @@
                     <input class="form-control" type="text" name="SearchString" placeholder="Enter search term" />
                     <button class="btn-sm btn-dark btn-block" type="submit">Search</button>
                 </form>*@
+                <!-- Search Form -->
+                <form class="form mt-5" asp-action="SearchIndex" asp-controller="Posts" method="get">
+                    <div class="input-group">
+                        <input class="form-control" type="search" name="SearchString" placeholder="Enter a keyword to search" />
+                        <button class="btn-sm btn-dark" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
             </div>
         </div>
     </nav>
@@ -59,13 +66,6 @@
                         <span class="subheading">@ViewData["SubText"]</span>
                         <span><i>@ViewData["AuthorText"]</i></span>
                         @*This is where i will collect search string from user*@
-                        <!-- Search Form -->
-                        <form class="form mt-5" asp-action="SearchIndex" asp-controller="Posts" method="get">
-                            <div class="input-group">
-                                <input class="form-control" type="search" name="SearchString" placeholder="Enter a keyword to search" />
-                                <button class="btn-sm btn-dark" type="submit"><i class="fas fa-search"></i></button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
