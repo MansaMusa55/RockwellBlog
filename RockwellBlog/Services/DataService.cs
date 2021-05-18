@@ -68,10 +68,28 @@ namespace RockwellBlog.Services
                 LastName = "Cannon",
                 PhoneNumber = "763-283-7237",
                 EmailConfirmed = true,
+                ImageData = await _fileService.EncodeFileAsync("Headshot.jpg"),
+                ContentType = "jpg"
             };
+            var modUser = new BlogUser()
+            {
+                Email = "DiddyBop@mailinator.com",
+                UserName = "DiddyBop@mailinator.com",
+                DisplayName = "Diddy",
+                FirstName = "Harry",
+                LastName = "Styles",
+                PhoneNumber = "763-283-7237",
+                EmailConfirmed = true,
+                ImageData = await _fileService.EncodeFileAsync("modUser.jpg"),
+                ContentType = "jpg"
+            };
+
 
             await _userManager.CreateAsync(adminUser, _configuration["AdminPassword"]);
             await _userManager.AddToRoleAsync(adminUser, BlogRole.Administrator.ToString());
+            await _userManager.CreateAsync(modUser, _configuration["ModPassword"]);
+            await _userManager.AddToRoleAsync(modUser, BlogRole.Moderator.ToString());
+
         }
     }
 }
