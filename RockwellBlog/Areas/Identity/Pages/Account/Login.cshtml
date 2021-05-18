@@ -1,8 +1,20 @@
 ﻿@page
 @model LoginModel
+@using RockwellBlog.Services
+@using Microsoft.Extensions.Configuration
+@inject IBlogFileService _fileService
+@inject IConfiguration _configuration
+
 
 @{
     ViewData["Title"] = "Log in";
+    ViewData["HeaderText"] = "Log in Page";
+    ViewData["SubText"] = "Enter Information Below";
+
+    var DefaultImage = await _fileService.EncodeFileAsync(_configuration["DefaultHomePageImage"]);
+    var DefaultContentType = _configuration["DefaultHomePageImage"].Split('.')[1];
+    ViewData["HeaderImage"] = _fileService.DecodeImage(DefaultImage, DefaultContentType);
+
 }
 
 <h1>@ViewData["Title"]</h1>
