@@ -1,8 +1,20 @@
 ﻿@page
 @model TwoFactorAuthenticationModel
+@using RockwellBlog.Services
+@using Microsoft.Extensions.Configuration
+@inject IBlogFileService _fileService
+@inject IConfiguration _configuration
+
 @{
     ViewData["Title"] = "Two-factor authentication (2FA)";
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
+    ViewData["HeaderText"] = "Your Account";
+    ViewData["SubText"] = "Manage Profile";
+
+    var DefaultImage = await _fileService.EncodeFileAsync(_configuration["DefaultHomePageImage"]);
+    var DefaultContentType = _configuration["DefaultHomePageImage"].Split('.')[1];
+    ViewData["HeaderImage"] = _fileService.DecodeImage(DefaultImage, DefaultContentType);
+
 }
 
 <partial name="_StatusMessage" for="StatusMessage" />
