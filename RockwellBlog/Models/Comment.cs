@@ -19,7 +19,8 @@ namespace RockwellBlog.Models
             public DateTime? Moderated { get; set; }
             public string ModeratedBody { get; set; }
             public ModerationType ModerationType { get; set; }
-
+            
+            
             public virtual Post Post { get; set; }
             public virtual BlogUser Author { get; set; }
             public virtual BlogUser Moderator { get; set; }

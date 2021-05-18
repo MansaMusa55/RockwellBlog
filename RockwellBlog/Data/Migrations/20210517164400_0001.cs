@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace RockwellBlog.Data.Migrations
+namespace RockwellBlog.data.migrations
 {
-    public partial class Init : Migration
+    public partial class _0001 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

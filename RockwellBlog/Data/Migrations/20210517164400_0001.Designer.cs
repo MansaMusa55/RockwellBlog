@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RockwellBlog.Data;
 
-namespace RockwellBlog.Data.Migrations
+namespace RockwellBlog.data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210517160146_002")]
-    partial class _002
+    [Migration("20210517164400_0001")]
+    partial class _0001
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
