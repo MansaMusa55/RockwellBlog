@@ -31,7 +31,7 @@ namespace RockwellBlog.Controllers
             _slugService = slugService;
             _searchService = searchService;
         }
-
+        [AllowAnonymous]
         public async Task<ActionResult> BlogPostIndex(int? id)
         {
             if (id == null)

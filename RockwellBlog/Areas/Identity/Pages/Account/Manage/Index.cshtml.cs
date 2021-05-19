@@ -48,7 +48,7 @@ namespace RockwellBlog.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
-
+            [Display(Name = "New Image")]
             public IFormFile NewImage { get; set; }
 
         }

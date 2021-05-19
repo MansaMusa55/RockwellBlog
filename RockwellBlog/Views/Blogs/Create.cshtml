@@ -35,21 +35,23 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="ImageFile" class="control-label"></label>
-                <input asp-for="ImageFile" type="file" class="form-control" />
+                <label asp-for="ImageFile"></label>
+                <div class="custom-file">
+                    <input asp-for="ImageFile" type="file" class="form-control-file custom-file-input" />
+                    <label asp-for="ImageFile" class="control-label custom-file-label">Choose</label>
+                </div>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary btn-block" />
             </div>
         </form>
     </div>
 </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
