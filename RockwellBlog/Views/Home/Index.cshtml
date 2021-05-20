@@ -12,10 +12,10 @@
 
 <!-- Main Content-->
 <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="col mx-auto">
         @foreach (var blog in Model.OrderByDescending(c => c.Created))
         {
-            <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
+            <div class="col mt-2">
                 <div class="card border-dark">
                     <img class="img-fluid" src="@_fileService.DecodeImage(blog.ImageData, blog.ContentType)" />
                     <div class="card-body text-center">
@@ -49,50 +49,34 @@
 
 
             @*<div class="post-preview">
-                <div class="row">
-                    <div class="col">
-                        <div class="row">
-                            <div class="col">
-                                <img class="img-fluid" src="@_fileService.DecodeImage(blog.ImageData, blog.ContentType)" />
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <img class="img-fluid" src="@_fileService.DecodeImage(blog.ImageData, blog.ContentType)" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <a class="btn btn-dark btn-block btn-sm" asp-controller="Posts" asp-action="BlogPostIndex" asp-route-id="@blog.Id">Read Posts</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <a class="btn btn-dark btn-block btn-sm" asp-controller="Posts" asp-action="BlogPostIndex" asp-route-id="@blog.Id">Read Posts</a>
-                            </div>
+                        <div class="col">
+                            <a href="post.html">
+                                <h2 class="post-title">@blog.Name</h2>
+                                <h3 class="post-subtitle">@blog.Description</h3>
+                            </a>
+                            <p class="post-meta">
+                                Posted by Samuel Musa on @blog.Created.ToString("MMM dd, yyyy")
+                            </p>
                         </div>
                     </div>
-                    <div class="col">
-                        <a href="post.html">
-                            <h2 class="post-title">@blog.Name</h2>
-                            <h3 class="post-subtitle">@blog.Description</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by Samuel Musa on @blog.Created.ToString("MMM dd, yyyy")
-                        </p>
-                    </div>
-                </div>
-            </div>*@
+                </div>*@
             <hr />
         }
-        <div class="col">
-            <div class="card">
-                <h5 class="card-header">Search Keywords</h5>
-                <div class="card-body">
-                    <!-- Search Form -->
-                    <form class="form" asp-action="SearchIndex" asp-controller="Posts" method="get">
-                        <div class="input-group">
-                            <input class="form-control" type="search" name="SearchString" placeholder="Enter keyword" />
-                            <button class="btn-sm btn-dark" type="submit"><i class="fas fa-search"></i></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
 
 
-        <!-- Pager-->
-        <div class="clearfix"><a class="btn btn-primary float-right" href="#!">Older Posts →</a></div>
     </div>
 </div>
 
@@ -104,7 +88,7 @@
 
 <div class="row">
     <div class="col">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), 
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }),
             new PagedListRenderOptions
             {
                 LiElementClasses = new string[] { "page-item" },
@@ -113,3 +97,19 @@
             })
     </div>
 </div>
+<div class="col">
+    <div class="card">
+        <h5 class="card-header">Search Keywords</h5>
+        <div class="card-body">
+            <!-- Search Form -->
+            <form class="form" asp-action="SearchIndex" asp-controller="Posts" method="get">
+                <div class="input-group">
+                    <input class="form-control" type="search" name="SearchString" placeholder="Enter keyword" />
+                    <button class="btn-sm btn-dark" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
