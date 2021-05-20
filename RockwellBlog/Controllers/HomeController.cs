@@ -35,7 +35,7 @@ namespace RockwellBlog.Controllers
             ViewData["SubText"] = "Welcome to my Web Dev Blog";
 
             var pageNumber = page ?? 1;
-            var pageSize = 6;
+            var pageSize = 3;
 
             var allBlogs = await _context.Blog.OrderByDescending(b => b.Created)
                                                .ToPagedListAsync(pageNumber, pageSize);
