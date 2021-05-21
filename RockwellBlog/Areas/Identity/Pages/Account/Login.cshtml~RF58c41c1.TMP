@@ -20,7 +20,7 @@
 <div class="card text-white bg-dark mb-3">
     <div class="container">
         <div class="row">
-            <div class="col-6 ml-2 mt-5 mb-5">
+            <div class="col-6 mt-5 mb-5">
 
                 <h1>@ViewData["Title"]</h1>
                         <section>
@@ -62,7 +62,7 @@
                                 </div>
                             </form>
                         </section>
-                    <div class="col mt-5 mb-5">
+                    <div class="col-6 mt-5 mb-5">
                         <section>
                             <h4>Use another service to log in.</h4>
                             <hr />

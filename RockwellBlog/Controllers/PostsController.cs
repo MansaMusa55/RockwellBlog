@@ -61,7 +61,7 @@ namespace RockwellBlog.Controllers
 
 
 
-
+        [AllowAnonymous]
         // GET: Posts/Details/5
         public async Task<IActionResult> Details(string slug)
         {
