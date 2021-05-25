@@ -31,7 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
-
+                    <li class="nav-item"><a class="nav-link" href="https://mansamusa.netlify.app/" target="_blank">About Me</a></li>
                     @if (User.IsInRole("Administrator"))
                     {
                         <li class="nav-item"><a class="nav-link" asp-controller="Blogs" asp-action="Create">Create Blog</a></li>
@@ -108,7 +108,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2021</p>
+                    <p class="copyright text-black">Copyright &copy; Samuel Musa 2021</p>
                 </div>
             </div>
         </div>

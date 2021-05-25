@@ -23,7 +23,7 @@ namespace RockwellBlog.Controllers
             _context = context;
             _userManager = userManager;
         }
-
+        [Authorize]
         // GET: Comments
         public async Task<IActionResult> Index()
         {

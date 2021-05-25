@@ -28,7 +28,7 @@ namespace RockwellBlog.Controllers
         }
 
         // GET: Blogs
-        [AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> Index()
         {
 
@@ -36,7 +36,7 @@ namespace RockwellBlog.Controllers
         }
 
         // GET: Blogs/Details/5
-        [AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

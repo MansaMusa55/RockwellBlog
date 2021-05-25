@@ -14,42 +14,47 @@
 <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
         @foreach (var post in Model)
-        {
-            <div class="post-preview">
-                <div class="row">
-                    <div class="col">
-                        <div class="row">
-                            <div class="col">
-                                <img class="img-fluid" src="@_fileService.DecodeImage(post.ImageData, post.ContentType)" />
+        {<div class="card border-warning">
+                <div class="post-preview">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <img class="img-fluid" src="@_fileService.DecodeImage(post.ImageData, post.ContentType)" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    
+                                    <a class="btn btn-dark btn-block btn-sm" asp-action="Details" asp-route-slug="@post.Slug">Read Details</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <a class="btn btn-dark btn-block btn-sm" asp-action="Details" asp-route-slug="@post.Slug">Read Details</a>
+                        <div class="col">
+                            <div class="card-header">
+                                <a asp-action="Details" asp-route-slug="@post.Slug">
+                                    <h2 class="post-title">@post.Title</h2>
+                                    <h3 class="post-subtitle">@post.Abstract</h3>
+                                </a>
+                                <div class="card-body">
+                                    <p class="post-meta">
+                                        Posted by Samuel Musa on @post.Created.ToString("MMM dd, yyyy")
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <a href="post.html">
-                            <h2 class="post-title">@post.Title</h2>
-                            <h3 class="post-subtitle">@post.Abstract</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by Samuel Musa on @post.Created.ToString("MMM dd, yyyy")
-                        </p>
                     </div>
                 </div>
             </div>
-            <hr />
         }
 
         <!-- Pager-->
-        <div class="clearfix"><a class="btn btn-primary float-right" href="#!">Older Posts →</a></div>
     </div>
+    <hr />
 </div>
 
 <div class="row">
-    <div class="col h3">
+    <div class="col h">
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
     </div>
 </div>

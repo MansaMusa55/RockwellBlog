@@ -413,7 +413,6 @@ C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\r
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\RockwellBlog.csprojAssemblyReference.cache
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\RockwellBlog.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\RockwellBlog.AssemblyInfoInputs.cache
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\RockwellBlog.AssemblyInfo.cs

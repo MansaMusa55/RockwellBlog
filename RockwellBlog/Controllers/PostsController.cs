@@ -48,7 +48,7 @@ namespace RockwellBlog.Controllers
 
             return View(blogPosts);
         }
-
+        [Authorize]
         // GET: Posts
         public async Task<IActionResult> Index()
         {
@@ -92,7 +92,7 @@ namespace RockwellBlog.Controllers
             return View();
         }
 
-
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SearchIndex(int? page, string searchString)
@@ -104,7 +104,7 @@ namespace RockwellBlog.Controllers
             var pageNumber = page ?? 1;
             var pageSize = 2;
 
-            return View("Index", await posts.ToPagedListAsync(pageNumber, pageSize));
+            return View("SearchIndex", await posts.ToPagedListAsync(pageNumber, pageSize));
         }
 
 
