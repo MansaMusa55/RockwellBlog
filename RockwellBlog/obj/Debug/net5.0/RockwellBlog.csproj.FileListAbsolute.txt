@@ -499,3 +499,4 @@ C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\R
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\ref\RockwellBlog.dll
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\RockwellBlog.pdb
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\RockwellBlog.genruntimeconfig.cache
+C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\RockwellBlog.csprojAssemblyReference.cache
