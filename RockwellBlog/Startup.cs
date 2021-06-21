@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using RockwellBlog.Data;
 using RockwellBlog.Models;
 using RockwellBlog.Services;
@@ -50,6 +51,22 @@ namespace RockwellBlog
             services.AddScoped<IEmailSender, GmailEmailService>();
             services.AddScoped<SearchService>();
 
+            //Add my swagger service refernce here
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Blog API",
+                    Version = "v1",
+                    Description = "Serving up Blog data using .Net Core",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Samuel Musa",
+                        Email = "musax025@gmail.com",
+                        Url = new System.Uri("https://www.linkedin.com/in/samuel-musa-27a21120b/")
+                    }
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +83,14 @@ namespace RockwellBlog
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestAPI v1");
+                c.DocumentTitle = "Samuel's Blog Public API";
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

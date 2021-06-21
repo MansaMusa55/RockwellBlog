@@ -500,3 +500,9 @@ C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\r
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\RockwellBlog.pdb
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\RockwellBlog.genruntimeconfig.cache
 C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\obj\Debug\net5.0\RockwellBlog.csprojAssemblyReference.cache
+C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Nancy Ibeling\source\repos\RockwellBlog\RockwellBlog\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
