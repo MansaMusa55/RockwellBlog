@@ -14,6 +14,7 @@ using RockwellBlog.Models;
 using RockwellBlog.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -54,6 +55,7 @@ namespace RockwellBlog
             //Add my swagger service refernce here
             services.AddSwaggerGen(c =>
             {
+                c.IncludeXmlComments($"{Directory.GetCurrentDirectory()}/wwwroot/RockwellBlog.xml", true);
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "Blog API",
@@ -88,6 +90,8 @@ namespace RockwellBlog
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestAPI v1");
+                c.InjectJavascript("/swagger/swagger.js");
+                c.InjectStylesheet("/swagger/swagger.css");
                 c.DocumentTitle = "Samuel's Blog Public API";
             });
 
@@ -102,8 +106,8 @@ namespace RockwellBlog
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "SEORoute",
-                    pattern: "SamuelsPosts/Details/{slug}",
+                    name: "SEO_Route",
+                    pattern: "SamuelsPosts/SEOFriendly/{slug}",
                     defaults: new { controller = "Posts", action = "Details" });
 
                 endpoints.MapControllerRoute(

@@ -1,0 +1,20 @@
+﻿.swagger-ui .topbar {
+    background-color: blue;
+}
+
+    .swagger-ui .topbar .download-url-wrapper .select-label select {
+        border-color: black;
+    }
+
+.topbar-wrapper img {
+    content: url("/swagger/cflogo.png");
+}
+
+.topbar-wrapper .link:after {
+    
+    color: #fff;
+    visibility: visible;
+    display: block;
+    position: absolute;
+    padding-left: 120px;
+}

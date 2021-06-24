@@ -21,6 +21,12 @@ namespace RockwellBlog.Controllers.ApiControllers
             _context = context;
         }
 
+        /// <summary>
+        /// This method will get the most recent X number of blog posts
+        /// </summary>
+        /// <param name="num">The Number of Blog posts you want..</param>
+        /// <returns></returns>
+
         [HttpGet("/GetTopXPosts/{num}")]
         public async Task<ActionResult<IEnumerable<Post>>> GetTopXPosts(int num)
         {
@@ -28,12 +34,12 @@ namespace RockwellBlog.Controllers.ApiControllers
         }
 
 
-        // GET: api/PostsApi
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
-        {
-            return await _context.Posts.ToListAsync();
-        }
+        //// GET: api/PostsApi
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
+        //{
+        //    return await _context.Posts.ToListAsync();
+        //}
 
         //// GET: api/PostsApi/5
         //[HttpGet("{id}")]
@@ -49,7 +55,7 @@ namespace RockwellBlog.Controllers.ApiControllers
         //    return post;
         //}
 
-         
+
         //// PUT: api/PostsApi/5
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         //[HttpPut("{id}")]
